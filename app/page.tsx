@@ -1,6 +1,6 @@
 const chapters = [
-  ["01", "Origen"], ["02", "Investigación"], ["03", "Producción"],
-  ["04", "Ecosistema"], ["05", "Encuestas"], ["06", "Resultados"], ["07", "Futuro"],
+  ["01", "Origen"], ["02", "Cronología"], ["03", "Investigación"], ["04", "Producción"],
+  ["05", "Ecosistema"], ["06", "Encuestas"], ["07", "Resultados"], ["08", "Futuro"],
 ];
 
 const institutionalChannels = [
@@ -103,7 +103,7 @@ export default function Home() {
           <p className="hero-lead">Un recorrido por la transformación digital de la Facultad de Ciencias Médicas de la Universidad Privada del Este.</p>
           <div className="hero-actions">
             <a className="button primary" href="#capitulo-01">Comenzar presentación <span>↓</span></a>
-            <a className="button ghost" href="#capitulo-03">Ver proceso audiovisual</a>
+            <a className="button ghost" href="#capitulo-04">Ver proceso audiovisual</a>
           </div>
         </div>
         <div className="hero-stat">
@@ -129,8 +129,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capitulo-02" className="chapter research dark-section">
-        <div className="chapter-label light"><span>CAPÍTULO 02</span><i /></div>
+      <section id="capitulo-02" className="chapter timeline-section">
+        <div className="chapter-label"><span>CAPÍTULO 02</span><i /></div>
+        <div className="section-head"><div><p className="kicker">LÍNEA DE TIEMPO</p><h2>Avances que construyen<br />una <em>transformación.</em></h2></div><p>Antes de entrar en el detalle de cada componente, así fue el camino que construyó este ecosistema.</p></div>
+        <div className="timeline">{milestones.map(([m,y,title,text],i)=><article key={`${m}-${title}`}><div className="date"><b>{m}</b><span>{y}</span></div><i className={i===CURRENT_MILESTONE_INDEX?'current':''}/><div><small>HITO {String(i+1).padStart(2,'0')}</small><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      </section>
+
+      <section id="capitulo-03" className="chapter research dark-section">
+        <div className="chapter-label light"><span>CAPÍTULO 03</span><i /></div>
         <div className="section-head">
           <div><p className="kicker">INVESTIGACIÓN Y SELECCIÓN</p><h2>No elegimos herramientas.<br /><em>Diseñamos un ecosistema.</em></h2></div>
           <p>Más de 21 soluciones fueron evaluadas en investigación, creación de contenidos, producción audiovisual, automatización, comunicación y gestión del conocimiento.</p>
@@ -148,8 +154,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capitulo-03" className="chapter production">
-        <div className="chapter-label"><span>CAPÍTULO 03</span><i /></div>
+      <section id="capitulo-04" className="chapter production">
+        <div className="chapter-label"><span>CAPÍTULO 04</span><i /></div>
         <div className="section-head">
           <div><p className="kicker">LABORATORIO AUDIOVISUAL</p><h2>Del conocimiento<br />a la <em>videoclase.</em></h2></div>
           <p>Un proceso trazable transforma contenido académico validado en experiencias audiovisuales claras, consistentes y reutilizables.</p>
@@ -179,8 +185,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capitulo-04" className="chapter ecosystem dark-section">
-        <div className="chapter-label light"><span>CAPÍTULO 04</span><i /></div>
+      <section id="capitulo-05" className="chapter ecosystem dark-section">
+        <div className="chapter-label light"><span>CAPÍTULO 05</span><i /></div>
         <div className="section-head"><div><p className="kicker">ECOSISTEMA CONECTADO</p><h2>Una solución.<br /><em>Múltiples avances.</em></h2></div><p>Cada componente responde a una necesidad concreta y se integra dentro de una experiencia institucional coherente.</p></div>
         <div className="ecosystem-grid">
           <article className="eco-card assistant"><span className="card-number">01</span><div className="phone"><div className="phone-head">Asistente Medicina <i /></div><div className="bubble user">¿Cuándo comienza la primera convocatoria?</div><div className="bubble bot">La primera convocatoria del Curso de Admisión comienza el <b>1 de octubre.</b></div><small>Información institucional validada</small></div><div><p className="kicker">ASISTENTE VIRTUAL</p><h3>Atención clara, continua y basada en datos oficiales.</h3><p>Entrenado con una base de conocimiento institucional e integrado a los canales conectados con Respond.io.</p></div></article>
@@ -196,8 +202,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capitulo-05" className="chapter surveys">
-        <div className="chapter-label"><span>CAPÍTULO 05</span><i /></div>
+      <section id="capitulo-06" className="chapter surveys">
+        <div className="chapter-label"><span>CAPÍTULO 06</span><i /></div>
         <div className="section-head survey-heading">
           <div><p className="kicker">ESCUCHA Y EVALUACIÓN</p><h2>Decisiones respaldadas<br />por la <em>voz estudiantil.</em></h2></div>
           <p>Dos encuestas realizadas mediante Google Forms permiten identificar hábitos de comunicación y oportunidades para fortalecer el aprendizaje clínico digital.</p>
@@ -268,10 +274,8 @@ export default function Home() {
         <div className="method-note"><b>Nota metodológica</b><span>Resultados descriptivos de formularios aplicados en julio de 2026. Cada porcentaje indica su denominador; las preguntas opcionales o no respondidas se calculan solamente sobre respuestas válidas. Los comentarios abiertos fueron agrupados por temas, sin convertirlos en porcentajes.</span></div>
       </section>
 
-      <section id="capitulo-06" className="chapter timeline-section">
-        <div className="chapter-label"><span>CAPÍTULO 06</span><i /></div>
-        <div className="section-head"><div><p className="kicker">LÍNEA DE TIEMPO</p><h2>Avances que construyen<br />una <em>transformación.</em></h2></div><p>Cada etapa aportó una pieza concreta al ecosistema digital actual.</p></div>
-        <div className="timeline">{milestones.map(([m,y,title,text],i)=><article key={`${m}-${title}`}><div className="date"><b>{m}</b><span>{y}</span></div><i className={i===CURRENT_MILESTONE_INDEX?'current':''}/><div><small>HITO {String(i+1).padStart(2,'0')}</small><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      <section id="capitulo-07" className="chapter results-section">
+        <div className="chapter-label"><span>CAPÍTULO 07</span><i /></div>
         <div className="results">
           <p className="kicker">RESULTADOS ALCANZADOS</p>
           <div><article><strong>+21</strong><span>herramientas<br/>investigadas</span></article><article><strong>01</strong><span>asistente virtual<br/>desarrollado</span></article><article><strong>6</strong><span>años académicos<br/>organizados</span></article><article><strong>360°</strong><span>recorrido virtual<br/>incorporado</span></article></div>
@@ -280,7 +284,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capitulo-07" className="future">
+      <section id="capitulo-08" className="future">
         <img src="/media/laboratorio.jpg" alt="Laboratorio de Medicina UPE" />
         <div className="future-overlay" />
         <div className="future-content"><p className="kicker">PRÓXIMA ETAPA</p><h2>El ecosistema<br />continúa creciendo.</h2><p>La evolución tecnológica desarrollada entre 2017 y 2026 es la base de una nueva etapa: consolidar un ecosistema inteligente de aprendizaje que fortalezca la calidad de la formación médica, la experiencia del estudiante y el cumplimiento de los estándares de acreditación.</p><div className="future-list">{projections.map(([n,title,text])=><span key={n}>{n} <b>{title}</b><br/>{text}</span>)}</div></div>
