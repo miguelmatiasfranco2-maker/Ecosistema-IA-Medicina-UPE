@@ -38,10 +38,45 @@ const stations = [
 ];
 
 const milestones = [
-  ["FEB", "2026", "Primeras pruebas", "Comienza la experimentación con guiones, voz artificial, avatares y edición de videoclases."],
-  ["MAY", "2026", "Comunicación inteligente", "Respond.io se incorpora como plataforma de atención y comunicación prioritaria."],
-  ["JUN", "2026", "Asistente y experiencia digital", "Se crea el asistente virtual y avanza el nuevo diseño del micrositio de Medicina."],
-  ["JUL", "2026", "Ecosistema consolidado", "Se publica el micrositio renovado, el tour 360° y se organiza la base estudiantil."],
+  ["2017", "", "Implementación de Moodle", "Se incorpora Moodle como plataforma oficial de apoyo a la enseñanza, iniciando la digitalización de contenidos académicos. Objetivos: centralizar materiales de estudio, facilitar la interacción entre docentes y estudiantes, e incorporar recursos virtuales al proceso de enseñanza."],
+  ["2019–2020", "", "La pandemia acelera la transformación", "La emergencia sanitaria aceleró la incorporación de tecnologías digitales. Se integran al ecosistema Moodle herramientas de videoconferencia: Zoom, BigBlueButton y Google Meet, permitiendo videoclases, videoconferencias, continuidad académica, comunicación permanente con los estudiantes y producción de material audiovisual educativo. En paralelo, se moderniza la infraestructura tecnológica: servidores institucionales y entorno Moodle."],
+  ["2020", "", "Implementación de Google Workspace", "La Universidad incorpora Google Workspace para fortalecer la colaboración entre docentes, estudiantes y equipos administrativos: Gmail institucional, Drive, Meet, Calendar y documentos colaborativos."],
+  ["2020", "", "Prueba de plataformas: MEDCEL y SanarFlix", "Se firman acuerdos con empresas productoras de contenidos pedagógicos digitales para dar acceso a los alumnos, con fines de contratación formal posterior: se utiliza durante todo 2020 la plataforma MEDCEL de AFYA y la plataforma SanarFlix de SANAR."],
+  ["2021", "", "Contratación de SanarFlix", "Se contrata SanarFlix para todos los alumnos desde primer año, incorporando una plataforma especializada de contenidos para Ciencias de la Salud y ampliando los recursos de aprendizaje disponibles para estudiantes y docentes."],
+  ["2021", "", "Incorporación de H5P", "Se implementa H5P (HTML5 Package) para el desarrollo de recursos educativos interactivos: cuestionarios interactivos, videos enriquecidos, presentaciones dinámicas, actividades de autoevaluación y contenidos reutilizables. El principal desafío fue integrar estas herramientas eficazmente con Moodle."],
+  ["2023", "", "Biblioteca Digital: eLibro", "Se incorpora la plataforma eLibro, ampliando el acceso de estudiantes y docentes a bibliografía digital especializada: aprendizaje autónomo, investigación y acceso remoto a información científica."],
+  ["2020", "", "Prueba de nuevas plataformas: Hardworkmedicine, Lecturio y EstrategiaMed", "Se firman acuerdos con nuevas empresas productoras de contenidos pedagógicos digitales, enfocados en preparar a los alumnos para exámenes de competencias como la Revalida del diploma en Brasil: la plataforma Hardworkmedicine de WEMED Educação Médica, la plataforma Lecturio de EdTech y la plataforma EstrategiaMed de Estratégia Educacional."],
+  ["2024", "", "Estrategia de Marketing Digital", "La Facultad desarrolla una estrategia integral de comunicación digital orientada a posicionamiento institucional, captación de estudiantes, fortalecimiento de la presencia digital y producción de contenidos audiovisuales. En la etapa 2024-2025 la UPE adquiere un paquete de herramientas de edición y automatización como laboratorio de prueba, gestionado a través del correo institucional junto con la captación de estudiantes con conocimientos en TIC: Canva, IlebenLab, OpenAI–ChatGPT y Make. Se inicia el convenio con la empresa EstrategiaMed —programa nuevo— para su producto Revalida Exclusive, destinado a alumnos de sexto año."],
+  ["2025", "", "Convenio con Paciente 360", "Se realiza un convenio con la empresa ACTIVE para su producto PACIENTE360, en uso de prueba durante un semestre, dando acceso a los alumnos de sexto año seleccionados con fines de contratación formal posterior."],
+  ["2025", "", "Plataforma Active 360°: experiencia inmersiva", "Se incorpora el recorrido virtual inmersivo de la Facultad, permitiendo a futuros estudiantes conocer laboratorios, salas de simulación, biblioteca, aulas e infraestructura académica, fortaleciendo la experiencia del postulante antes de ingresar a la Universidad."],
+  ["FEB", "2026", "Primeras pruebas de Inteligencia Artificial", "Comienza la experimentación con tecnologías de IA aplicadas a la educación: generación de guiones, voces sintéticas, avatares digitales y edición automatizada de videoclases."],
+  ["MAY", "2026", "Comunicación Inteligente", "Se incorpora Respond.io como plataforma prioritaria para la atención y comunicación institucional: centralizar consultas, automatizar respuestas, mejorar la comunicación con postulantes y estudiantes, e integrar WhatsApp como canal institucional."],
+  ["JUN", "2026", "Asistente Virtual y Experiencia Digital", "Se inicia el desarrollo del asistente virtual institucional y del nuevo micrositio web de Medicina, trabajando sobre experiencia del usuario, automatización de consultas, accesibilidad y navegación moderna. Además, se contrata PACIENTE360 (ACTIVE) para todos los alumnos desde cuarto año, con la finalidad de desarrollar competencias procedimentales y evaluaciones prácticas."],
+  ["JUL", "2026", "Ecosistema Consolidado", "Se completa una nueva etapa de transformación: publicación del nuevo micrositio institucional, integración del Tour Virtual 360°, organización y actualización de la base de estudiantes, y consolidación del ecosistema digital de comunicación."],
+  ["2027", "", "Proyección: Analítica Académica", "Uso de indicadores para apoyar la toma de decisiones y el seguimiento del rendimiento estudiantil."],
+  ["2028", "", "Proyección: Inteligencia Artificial en la Enseñanza", "Desarrollo de asistentes académicos, simulaciones clínicas inteligentes y recursos personalizados para el aprendizaje."],
+  ["2029–2030", "", "Proyección: Campus Inteligente", "Integración de plataformas académicas, comunicación, bienestar estudiantil e internacionalización en un único ecosistema digital."],
+];
+const CURRENT_MILESTONE_INDEX = 14;
+
+const achievements = [
+  "Consolidación de Moodle como entorno virtual de aprendizaje.",
+  "Integración de herramientas de videoconferencia y colaboración.",
+  "Modernización de la infraestructura tecnológica y de los servidores institucionales.",
+  "Incorporación de recursos educativos interactivos mediante H5P.",
+  "Acceso a bibliografía digital especializada a través de eLibro.",
+  "Fortalecimiento de la estrategia de comunicación institucional.",
+  "Desarrollo de experiencias inmersivas mediante el Tour Virtual 360°.",
+  "Implementación de herramientas de inteligencia artificial aplicadas a la educación.",
+  "Automatización de la comunicación institucional con Respond.io.",
+  "Renovación del portal web y mejora de la experiencia digital del estudiante.",
+];
+
+const projections = [
+  ["01", "Analítica académica", "2027 · indicadores para apoyar la toma de decisiones y el seguimiento del rendimiento estudiantil."],
+  ["02", "IA en la enseñanza", "2028 · asistentes académicos, simulaciones clínicas inteligentes y recursos personalizados para el aprendizaje."],
+  ["03", "Campus inteligente", "2029–2030 · integración de plataformas académicas, comunicación, bienestar estudiantil e internacionalización."],
+  ["04", "Ecosistema inteligente de aprendizaje", "Analítica académica, simulación clínica y comunicación omnicanal integradas para fortalecer la calidad de la formación médica."],
 ];
 
 export default function Home() {
@@ -236,10 +271,11 @@ export default function Home() {
       <section id="capitulo-06" className="chapter timeline-section">
         <div className="chapter-label"><span>CAPÍTULO 06</span><i /></div>
         <div className="section-head"><div><p className="kicker">LÍNEA DE TIEMPO</p><h2>Avances que construyen<br />una <em>transformación.</em></h2></div><p>Cada etapa aportó una pieza concreta al ecosistema digital actual.</p></div>
-        <div className="timeline">{milestones.map(([m,y,title,text],i)=><article key={m}><div className="date"><b>{m}</b><span>{y}</span></div><i className={i===3?'current':''}/><div><small>HITO 0{i+1}</small><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+        <div className="timeline">{milestones.map(([m,y,title,text],i)=><article key={`${m}-${title}`}><div className="date"><b>{m}</b><span>{y}</span></div><i className={i===CURRENT_MILESTONE_INDEX?'current':''}/><div><small>HITO {String(i+1).padStart(2,'0')}</small><h3>{title}</h3><p>{text}</p></div></article>)}</div>
         <div className="results">
           <p className="kicker">RESULTADOS ALCANZADOS</p>
           <div><article><strong>+21</strong><span>herramientas<br/>investigadas</span></article><article><strong>01</strong><span>asistente virtual<br/>desarrollado</span></article><article><strong>6</strong><span>años académicos<br/>organizados</span></article><article><strong>360°</strong><span>recorrido virtual<br/>incorporado</span></article></div>
+          <div className="results-list">{achievements.map(a=><span key={a}>{a}</span>)}</div>
           <small>Solo se presentan resultados confirmados. No se incluyen métricas aún no medidas.</small>
         </div>
       </section>
@@ -247,7 +283,7 @@ export default function Home() {
       <section id="capitulo-07" className="future">
         <img src="/media/laboratorio.jpg" alt="Laboratorio de Medicina UPE" />
         <div className="future-overlay" />
-        <div className="future-content"><p className="kicker">PRÓXIMA ETAPA</p><h2>El ecosistema<br />continúa creciendo.</h2><div className="future-list"><span>01 <b>Completar integraciones</b></span><span>02 <b>Ampliar conocimiento</b></span><span>03 <b>Medir resultados</b></span><span>04 <b>Escalar el modelo</b></span></div></div>
+        <div className="future-content"><p className="kicker">PRÓXIMA ETAPA</p><h2>El ecosistema<br />continúa creciendo.</h2><p>La evolución tecnológica desarrollada entre 2017 y 2026 es la base de una nueva etapa: consolidar un ecosistema inteligente de aprendizaje que fortalezca la calidad de la formación médica, la experiencia del estudiante y el cumplimiento de los estándares de acreditación.</p><div className="future-list">{projections.map(([n,title,text])=><span key={n}>{n} <b>{title}</b><br/>{text}</span>)}</div></div>
       </section>
 
       <footer>
