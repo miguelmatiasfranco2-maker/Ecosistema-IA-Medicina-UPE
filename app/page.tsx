@@ -195,13 +195,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="infrastructure">
-        <div className="infra-copy"><p className="kicker">INFRAESTRUCTURA + INNOVACIÓN</p><h2>La tecnología complementa una formación médica <em>real.</em></h2><p>Laboratorios, espacios de práctica y acceso al conocimiento sostienen cada avance digital.</p></div>
-        <div className="gallery">
-          {[["/media/microscopia.jpg","Microscopía","Investigación"],["/media/practica.jpg","Prácticas médicas","Formación aplicada"],["/media/anatomia.jpg","Anatomía","Aprendizaje práctico"],["/media/biblioteca.jpg","Biblioteca","Acceso al conocimiento"],["/media/libros.jpg","Colección médica","Respaldo científico"]].map(([src,title,sub])=><figure key={title}><img src={src} alt={title}/><figcaption><b>{title}</b><span>{sub}</span></figcaption></figure>)}
-        </div>
-      </section>
-
       <section id="capitulo-06" className="chapter surveys">
         <div className="chapter-label"><span>CAPÍTULO 06</span><i /></div>
         <div className="section-head survey-heading">
