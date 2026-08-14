@@ -32,7 +32,7 @@ const tools = [
 
 const stations = [
   { n: "01", title: "Contenido y guion", text: "El contenido docente se adapta a un lenguaje claro, narrable y pedagógico sin alterar su rigor académico.", tag: "ChatGPT", action: "Ver comparación", media: "Documento original → guion optimizado", video: true, videoSrc: "/media/videos/creacion-guion.mp4", poster: "/media/creacion-guion-poster.jpg" },
-  { n: "02", title: "Creación de voz", text: "La narración se genera con parámetros definidos para obtener una voz natural, clara y consistente.", tag: "ElevenLabs", action: "Escuchar muestra", media: "Espacio para audio real", audio: true },
+  { n: "02", title: "Creación de voz", text: "La narración se genera con parámetros definidos para obtener una voz natural, clara y consistente.", tag: "ElevenLabs", action: "Escuchar muestra", media: "Espacio para audio real", audio: true, audioSrc: "/media/audio/voz-decano.m4a" },
   { n: "03", title: "Avatar docente", text: "Un presentador digital acompaña la introducción y el cierre, preservando una presencia institucional sobria.", tag: "HeyGen", action: "Ver fragmento", media: "Espacio para video de avatar", video: true, videoSrc: "/media/videos/avatar-heygen.mp4", poster: "/media/avatar-heygen-poster.jpg" },
   { n: "04", title: "Edición y revisión", text: "Voz, recursos médicos, identidad UPE y video se integran en una pieza final revisada antes de publicarse.", tag: "Filmora", action: "Ver montaje", media: "Espacio para captura de edición", video: true, videoSrc: "/media/videos/filmora-edicion.mp4", poster: "/media/filmora-edicion-poster.jpg" },
 ];
@@ -174,7 +174,7 @@ export default function Home() {
           {stations.map((s, i) => <article className={`station ${i===1?'featured':''}`} key={s.n}>
             <div className="station-top"><span>{s.n}</span><small>{s.tag}</small></div>
             <div className={`media-placeholder ${s.audio?'audio':''} ${s.videoSrc?'has-video':''}`}>
-              {s.audio ? <><button aria-label="Reproducir audio">▶</button><div className="wave">{Array.from({length:28}).map((_,j)=><i key={j} style={{height:`${18+(j*17)%48}%`}} />)}</div></> : s.videoSrc ? <video controls preload="metadata" poster={s.poster}><source src={s.videoSrc} type="video/mp4" /></video> : <><span className="media-icon">{s.video?'▶':'Aa'}</span><small>{s.media}</small></>}
+              {s.audioSrc ? <audio controls preload="metadata"><source src={s.audioSrc} type="audio/mp4" /></audio> : s.audio ? <><button aria-label="Reproducir audio">▶</button><div className="wave">{Array.from({length:28}).map((_,j)=><i key={j} style={{height:`${18+(j*17)%48}%`}} />)}</div></> : s.videoSrc ? <video controls preload="metadata" poster={s.poster}><source src={s.videoSrc} type="video/mp4" /></video> : <><span className="media-icon">{s.video?'▶':'Aa'}</span><small>{s.media}</small></>}
             </div>
             <h3>{s.title}</h3><p>{s.text}</p><button className="text-action">{s.action} <span>↗</span></button>
           </article>)}
