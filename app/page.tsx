@@ -59,6 +59,13 @@ const milestones = [
 ];
 const CURRENT_MILESTONE_INDEX = 14;
 
+const evolutionClips = [
+  { title: "Primera prueba", videoSrc: "/media/videos/primera-prueba.mp4", poster: "/media/primera-prueba-poster.jpg" },
+  { title: "Mejora de voz", videoSrc: "/media/videos/mejora-de-voz.mp4", poster: "/media/mejora-de-voz-poster.jpg" },
+  { title: "Avatar institucional", videoSrc: "/media/videos/avatar-institucional.mp4", poster: "/media/avatar-institucional-poster.jpg" },
+  { title: "Resultado actual", videoSrc: "/media/videos/resultado-actual.mp4", poster: "/media/resultado-actual-poster.jpg" },
+];
+
 const achievements = [
   "Consolidación de Moodle como entorno virtual de aprendizaje.",
   "Integración de herramientas de videoconferencia y colaboración.",
@@ -181,7 +188,7 @@ export default function Home() {
       <section className="evolution-band">
         <div><p className="kicker">EVOLUCIÓN DOCUMENTADA</p><h2>De las primeras pruebas<br />al modelo actual.</h2></div>
         <div className="clip-strip">
-          {['Primera prueba','Mejora de voz','Avatar institucional','Resultado actual'].map((x,i)=><article key={x}><div><img src={['/media/anatomia.jpg','/media/microscopia.jpg','/media/laboratorio.jpg','/media/biblioteca.jpg'][i]} alt="" /><button>▶</button><span>00:{8+i*2}</span></div><p><b>0{i+1}</b>{x}</p></article>)}
+          {evolutionClips.map((c,i)=><article key={c.title}><div><video controls preload="metadata" poster={c.poster}><source src={c.videoSrc} type="video/mp4" /></video></div><p><b>0{i+1}</b>{c.title}</p></article>)}
         </div>
       </section>
 

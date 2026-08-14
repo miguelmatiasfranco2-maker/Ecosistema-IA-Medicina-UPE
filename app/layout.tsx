@@ -20,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script id="respondio__widget" src="https://cdn.respond.io/webchat/widget/widget.js?cId=169a0624cea6e8f69c70278b7c9b694" async />
+      </body>
     </html>
   );
 }
