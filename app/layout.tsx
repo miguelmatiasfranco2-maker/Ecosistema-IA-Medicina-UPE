@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./capitulos-nuevos.css";
 
 export const metadata: Metadata = {
   title: "Ecosistema de Inteligencia Artificial | Medicina UPE",

@@ -1,7 +1,108 @@
+import Efectos from "./efectos";
+import Icono from "./icono";
+import MbareteDemo from "./mbarete-demo";
+
 const chapters = [
   ["01", "Origen"], ["02", "Cronología"], ["03", "Investigación"], ["04", "Producción"],
-  ["05", "Ecosistema"], ["06", "Encuestas"], ["07", "Resultados"], ["08", "Futuro"],
+  ["05", "Ecosistema"], ["06", "Encuestas"], ["07", "Resultados"], ["08", "Desafío"],
+  ["09", "Alianza"], ["10", "Laboratorio"], ["11", "Mbarete"], ["12", "Hoja de ruta"], ["13", "Futuro"],
 ];
+const NAV_HIDDEN = ["Investigación", "Encuestas"];
+
+const challengeStats: [number | null, string, string, string][] = [
+  [45, "", "45", "equipos inscriptos"], [117, "", "117", "participantes"], [12, "+", "+12", "carreras"], [null, "", "6 de 10", "participantes de Medicina"],
+];
+
+const mcloudProjects = [
+  ["01", "trophy", "Desafío UPE Innovación", "Realizado", "1 de noviembre de 2026. Estudiantes de toda la universidad presentaron ideas con IA ante un jurado. El equipo ganador recibió Gs. 10.000.000."],
+  ["02", "brain", "Mbarete, IA local de MCLoud", "Funcionando", "Una IA que corre en computadoras propias, busca en los documentos y responde citando la fuente. Ya prepara preguntas para Moodle con revisión docente."],
+  ["03", "users", "Plataforma UPE Bienestar", "Demo funcionando", "Diseñada con la Dirección de Bienestar: ficha de seguimiento de cada atención, cuestionarios y escalas, y ficha del estudiante. Hoy funciona con datos de prueba."],
+  ["04", "clapperboard", "Videoclases con avatar docente", "En pruebas", "Voz y rostro del docente, con su autorización por escrito, para producir videoclases más rápido. Cada video avisa que fue generado con IA."],
+  ["05", "scan-text", "Archivo Inteligente", "Piloto en preparación", "Para la Secretaría Académica de Medicina: digitalizar legajos y encontrarlos en segundos, con el documento original y permisos por persona. Financiado por MCLoud."],
+];
+
+const allianceFlow = [
+  ["users", "Talento", "Estudiantes y docentes de todas las carreras."],
+  ["target", "Necesidades reales", "Lo que cada facultad necesita mejorar."],
+  ["flask-conical", "Prototipos", "Se construyen y prueban en el Laboratorio UPE-IA."],
+  ["circle-check", "Validación", "Solo sigue lo que demuestra que sirve."],
+  ["rocket", "Soluciones", "Para la UPE y, con acuerdo previo, como productos de MCLoud."],
+];
+
+const labPipeline = [
+  ["lightbulb", "Idea", "Necesidades de las facultades, tesis y proyectos del Desafío."],
+  ["flask-conical", "Prototipo", "Un equipo mixto construye una primera versión que se puede usar."],
+  ["users", "Piloto", "Se prueba con usuarios reales en una facultad, con un responsable."],
+  ["chart-column", "Medición", "Costo, uso, satisfacción, tiempo ahorrado y aprendizaje."],
+  ["circle-check", "Decisión", "Se adopta, se mejora o se descarta a tiempo."],
+  ["rocket", "Escala", "Lo que funciona llega a otras carreras de la UPE."],
+];
+
+const labFeatures = [
+  ["users", "Espacio para equipos", "Docentes, estudiantes y mentores en casos reales, con metas por proyecto."],
+  ["server", "Servidor de IA propio", "Mbarete corre dentro del laboratorio: los datos de la universidad no salen a internet."],
+  ["messages-square", "Mentores", "Acompañamiento técnico de MCLoud y académico de cada facultad."],
+  ["library", "Banco de ideas y tesis", "Las tesis y las ideas del Desafío quedan registradas para volverse prototipos."],
+  ["flask-conical", "Zona de pruebas", "Datos de prueba y entornos separados para probar sin riesgo."],
+  ["shield-check", "Reglas claras", "Convenio, confidencialidad y propiedad intelectual definidos antes de empezar."],
+];
+
+const labLines = [
+  ["brain", "IA para aprender"], ["stethoscope", "Práctica médica simulada"], ["message-circle", "Asistentes que responden dudas"],
+  ["repeat", "Menos tareas repetidas"], ["chart-column", "Datos para decidir mejor"], ["clapperboard", "Videoclases con avatar docente"],
+];
+
+const ecosystemPieces = [
+  ["compass", "Dirección del Ecosistema", "Coordina todo y responde al Rectorado."],
+  ["users-round", "Consejo de Innovación", "Decide qué temas trabajar primero."],
+  ["flask-conical", "Laboratorio UPE-IA", "El lugar donde se prueban las ideas."],
+  ["map-pin", "Un referente por facultad", "Trae las necesidades de su carrera."],
+  ["graduation-cap", "Red de estudiantes", "Alumnos de todas las carreras en casos reales."],
+  ["shield-check", "Reglas claras", "Cuidar los datos y dejar claro de quién es cada idea."],
+];
+
+const labGains = [
+  ["graduation-cap", "Estudiantes", ["Experiencia en proyectos reales", "Mentoría y formación", "Becas o medias becas", "Posibilidad de sumarse a MCLoud"]],
+  ["building-2", "Docentes y facultades", ["Soluciones a sus necesidades", "Tesis que llegan a la práctica", "Saber qué funcionó y qué no"]],
+  ["landmark", "UPE", ["Innovación ordenada y medible", "Propiedad intelectual protegida", "Talento propio, visible y reconocido"]],
+] as const;
+
+const mbareteCaps = [
+  ["file-search", "Responde con fuentes", "Busca en los documentos cargados y cita de dónde sale cada dato.", "Funcionando"],
+  ["book-open", "Preguntas para Moodle", "Prepara preguntas a partir del material de clase, en formatos que Moodle importa. El docente revisa y aprueba.", "Funcionando"],
+  ["scan-text", "Lee documentos escaneados", "Extrae el texto de PDF y papeles escaneados: la base del Archivo Inteligente.", "Funcionando"],
+  ["workflow", "Automatizaciones", "Tareas que se repiten solas, como el resumen semanal de pendientes.", "Funcionando"],
+  ["brain", "Memoria", "Recuerda lo conversado y mejora con el uso, sin enviar datos afuera.", "Funcionando"],
+  ["plug", "API propia", "Los sistemas de la UPE, como Moodle, pueden usarla en lugar de servicios externos pagos.", "Lista para conectar"],
+  ["code", "Agente que programa", "Escribe y prueba código en una copia aislada; nada se aplica sin aprobación.", "En pruebas"],
+  ["clapperboard", "Voz y avatar docente", "Voz clonada y rostro que habla para videoclases, con autorización del docente.", "En pruebas"],
+];
+
+const mbareteStack = [
+  ["layers-3", "Dónde se usa", ["Chat web", "Moodle", "Asistente institucional", "Bienestar y Archivo Inteligente"]],
+  ["brain", "Mbarete · el trabajo de MCLoud", ["Búsqueda en documentos (RAG)", "Agentes y herramientas", "Memoria", "Ajuste con ejemplos (fine-tuning)"]],
+  ["cpu", "Modelos abiertos", ["Modelos de lenguaje abiertos de primer nivel", "Se cambian cuando aparece uno mejor"]],
+  ["hard-drive", "Infraestructura propia", ["Hoy: equipos de MCLoud y GPU dedicada", "Próximo: servidores de IA del laboratorio"]],
+] as const;
+
+const aiUses = [
+  ["server", "IA local", "Funciona dentro de la UPE", "Corre en computadoras propias. Los datos de alumnos y pacientes no salen a internet."],
+  ["file-search", "RAG", "Busca antes de responder", "Como un examen a libro abierto: busca en los documentos oficiales y responde con eso, citando la fuente."],
+  ["sliders-horizontal", "Fine-tuning", "Aprende con ejemplos", "Se ajusta con ejemplos aprobados de cada carrera para hablar como alguien del área, por ejemplo un tutor de Medicina."],
+];
+
+const dataRules = [
+  ["lock", "Los datos no salen a internet"], ["shield-check", "No se entrena con datos de la UPE sin autorización escrita"],
+  ["users", "Permisos por persona y registro de cada acceso"], ["circle-check", "Las personas deciden: la IA propone"],
+];
+
+const roadmap = [
+  ["Ya hecho", "2026", "done", ["Desafío UPE Innovación 2026", "Demo de la plataforma UPE Bienestar", "Mbarete funcionando con fuentes y preguntas para Moodle", "Primeras pruebas de videoclases con avatar"]],
+  ["Próximo paso", "Cierre de 2026", "next", ["Convenio UPE–MCLoud y reglas de propiedad intelectual", "Seguimiento de equipos y talentos del Desafío", "Servidores de IA propios para el laboratorio", "Archivo Inteligente: relevamiento y muestra"]],
+  ["Primer semestre", "2027", "", ["Laboratorio UPE-IA funcionando en Medicina", "Primeros prototipos con equipos mixtos", "UPE Bienestar con usuarios reales", "Mbarete conectado a Moodle, con revisión docente"]],
+  ["Segundo semestre", "2027", "", ["Laboratorio abierto a todas las facultades", "Desafío UPE Innovación 2027", "Analítica académica para decidir mejor"]],
+  ["Visión", "2028–2030", "", ["IA en la enseñanza y simulación clínica", "Campus inteligente: todo conectado en un solo ecosistema"]],
+] as const;
 
 const institutionalChannels = [
   ["WhatsApp", 42.2, 54], ["Instagram Medicina", 19.5, 25],
@@ -53,11 +154,13 @@ const milestones = [
   ["MAY", "2026", "Comunicación Inteligente", "Se incorpora Respond.io como plataforma prioritaria para la atención y comunicación institucional: centralizar consultas, automatizar respuestas, mejorar la comunicación con postulantes y estudiantes, e integrar WhatsApp como canal institucional."],
   ["JUN", "2026", "Asistente Virtual y Experiencia Digital", "Se inicia el desarrollo del asistente virtual institucional y del nuevo micrositio web de Medicina, trabajando sobre experiencia del usuario, automatización de consultas, accesibilidad y navegación moderna. Además, se contrata PACIENTE360 (ACTIVE) para todos los alumnos desde cuarto año, con la finalidad de desarrollar competencias procedimentales y evaluaciones prácticas."],
   ["JUL", "2026", "Ecosistema Consolidado", "Se completa una nueva etapa de transformación: publicación del nuevo micrositio institucional, integración del Tour Virtual 360°, organización y actualización de la base de estudiantes, y consolidación del ecosistema digital de comunicación."],
+  ["OCT", "2026", "Plataforma UPE Bienestar e IA local", "Junto a MCLoud se desarrolla la demo de la plataforma de Bienestar, diseñada con la Dirección de Bienestar, y se pone en marcha Mbarete, una IA que corre en computadoras propias y prepara preguntas para Moodle con revisión docente."],
+  ["NOV", "2026", "Desafío UPE Innovación 2026", "La UPE y MCLoud organizan el primer Desafío de innovación con IA: 45 equipos inscriptos y 117 participantes de más de 12 carreras presentan sus ideas ante un jurado."],
   ["2027", "", "Proyección: Analítica Académica", "Uso de indicadores para apoyar la toma de decisiones y el seguimiento del rendimiento estudiantil."],
   ["2028", "", "Proyección: Inteligencia Artificial en la Enseñanza", "Desarrollo de asistentes académicos, simulaciones clínicas inteligentes y recursos personalizados para el aprendizaje."],
   ["2029–2030", "", "Proyección: Campus Inteligente", "Integración de plataformas académicas, comunicación, bienestar estudiantil e internacionalización en un único ecosistema digital."],
 ];
-const CURRENT_MILESTONE_INDEX = 14;
+const CURRENT_MILESTONE_INDEX = 16;
 
 const evolutionClips = [
   { title: "Primera prueba", videoSrc: "/media/videos/primera-prueba.mp4", poster: "/media/primera-prueba-poster.jpg" },
@@ -77,27 +180,31 @@ const achievements = [
   "Implementación de herramientas de inteligencia artificial aplicadas a la educación.",
   "Automatización de la comunicación institucional con Respond.io.",
   "Renovación del portal web y mejora de la experiencia digital del estudiante.",
+  "Demo de la plataforma UPE Bienestar, desarrollada por MCLoud con la Dirección de Bienestar.",
+  "Desafío UPE Innovación 2026: 45 equipos inscriptos y 117 participantes.",
 ];
 
 const projections = [
-  ["01", "Analítica académica", "2027 · indicadores para apoyar la toma de decisiones y el seguimiento del rendimiento estudiantil."],
-  ["02", "IA en la enseñanza", "2028 · asistentes académicos, simulaciones clínicas inteligentes y recursos personalizados para el aprendizaje."],
-  ["03", "Campus inteligente", "2029–2030 · integración de plataformas académicas, comunicación, bienestar estudiantil e internacionalización."],
-  ["04", "Ecosistema inteligente de aprendizaje", "Analítica académica, simulación clínica y comunicación omnicanal integradas para fortalecer la calidad de la formación médica."],
+  ["01", "Laboratorio UPE-IA", "2027 · empieza en Medicina y se abre a todas las facultades, con servidor de IA propio y mentores."],
+  ["02", "Analítica académica", "2027 · indicadores para apoyar la toma de decisiones y el seguimiento del rendimiento estudiantil."],
+  ["03", "IA en la enseñanza", "2028 · asistentes académicos, simulaciones clínicas inteligentes y recursos personalizados para el aprendizaje."],
+  ["04", "Campus inteligente", "2029–2030 · integración de plataformas académicas, comunicación, bienestar estudiantil e internacionalización."],
 ];
 
 export default function Home() {
   return (
     <main>
+      <Efectos />
       <header className="topbar">
         <a className="brand" href="#inicio" aria-label="Inicio">
           <span className="brand-mark"><img src="/media/upe-logo.png" alt="Universidad Privada del Este" /></span>
-          <span><b>MEDICINA UPE</b><small>Innovación Tecnológica Educativa</small></span>
+          <i className="brand-divider" />
+          <span className="brand-mcloud"><img src="/media/mcloud-horizontal-color.svg" alt="MCLoud" /></span>
         </a>
         <nav aria-label="Capítulos">
-          {chapters.map(([n, label]) => <a key={n} href={`#capitulo-${n}`}>{label}</a>)}
+          {chapters.filter(([, label]) => !NAV_HIDDEN.includes(label)).map(([n, label]) => <a key={n} href={`#capitulo-${n}`} >{label}</a>)}
         </nav>
-        <span className="edition">Presentación institucional · 2026</span>
+        <span className="edition">Reunión de decanos · 2026</span>
       </header>
 
       <section id="inicio" className="hero">
@@ -107,10 +214,16 @@ export default function Home() {
         <div className="hero-content reveal">
           <p className="eyebrow"><span /> Área de Innovación Tecnológica Educativa</p>
           <h1>Ecosistema de<br /><em>Inteligencia Artificial</em></h1>
-          <p className="hero-lead">Un recorrido por la transformación digital de la Facultad de Ciencias Médicas de la Universidad Privada del Este.</p>
+          <p className="hero-lead">Un recorrido por la transformación digital de la Facultad de Ciencias Médicas de la Universidad Privada del Este: lo que ya logramos junto a MCLoud y lo que viene para toda la universidad.</p>
           <div className="hero-actions">
             <a className="button primary" href="#capitulo-01">Comenzar presentación <span>↓</span></a>
-            <a className="button ghost" href="#capitulo-04">Ver proceso audiovisual</a>
+            <a className="button ghost" href="#capitulo-09">Ver lo que hicimos con <span className="nocaps">MCLoud</span></a>
+          </div>
+          <div className="hero-alliance">
+            <span>Una alianza</span>
+            <img className="alliance-upe" src="/media/upe-logo.png" alt="Universidad Privada del Este" />
+            <i />
+            <img className="alliance-mcloud" src="/media/mcloud-horizontal-blanco.svg" alt="MCLoud" />
           </div>
         </div>
         <div className="hero-stat">
@@ -289,16 +402,134 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capitulo-08" className="future">
+      <section id="capitulo-08" className="chapter challenge">
+        <div className="chapter-label"><span>CAPÍTULO 08</span><i /></div>
+        <div className="section-head">
+          <div><p className="kicker">DESAFÍO UPE INNOVACIÓN 2026</p><h2>Toda la universidad<br />pensando <em>con IA.</em></h2></div>
+          <p>El 1 de noviembre de 2026, la UPE y MCLoud reunieron a estudiantes de todas las carreras para resolver necesidades reales con inteligencia artificial.</p>
+        </div>
+        <div className="challenge-stats" data-reveal>{challengeStats.map(([n, prefix, text, label]) => <article key={label}><strong {...(n !== null ? { "data-count": n, "data-prefix": prefix } : {})}>{text}</strong><span>{label}</span></article>)}</div>
+        <div className="challenge-gallery">
+          <figure className="big" data-reveal><img src="/media/desafio-grupal.jpg" alt="Foto grupal de participantes, jurado y organizadores del Desafío UPE Innovación 2026" /><figcaption>Participantes, jurado y organizadores al cierre del Desafío.</figcaption></figure>
+          <figure data-reveal style={{ "--i": 1 } as React.CSSProperties}><img src="/media/desafio-premiacion.jpg" alt="Entrega del premio de Gs. 10.000.000 al equipo ganador" /><figcaption>Premio al equipo ganador: Gs. 10.000.000.</figcaption></figure>
+          <figure data-reveal style={{ "--i": 2 } as React.CSSProperties}><img src="/media/desafio-exposicion.jpg" alt="Un equipo presenta su proyecto ante el jurado" /><figcaption>Cada equipo presentó su idea ante el jurado.</figcaption></figure>
+          <figure data-reveal style={{ "--i": 3 } as React.CSSProperties}><img src="/media/desafio-prototipo.jpg" alt="Prototipo de mano robótica presentado en el Desafío" /><figcaption>Ideas que ya llegan a prototipo.</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="capitulo-09" className="chapter mcloud-section dark-section">
+        <div className="glow g1" aria-hidden="true" /><div className="glow g2" aria-hidden="true" />
+        <div className="chapter-label light"><span>CAPÍTULO 09</span><i /></div>
+        <div className="section-head">
+          <div><p className="kicker">QUIÉN IMPULSA ESTE AVANCE</p><h2>UPE + MCLoud.<br /><em>Una alianza para innovar.</em></h2></div>
+          <p>MCLoud es una empresa paraguaya de tecnología. La UPE aporta talento, investigación y necesidades reales; MCLoud aporta desarrollo, infraestructura de IA y acompañamiento para convertir las mejores ideas en soluciones que funcionan.</p>
+        </div>
+        <div className="alliance-band" data-reveal>
+          <img className="alliance-upe" src="/media/upe-logo.png" alt="Universidad Privada del Este" />
+          <span>+</span>
+          <img className="alliance-mcloud" src="/media/mcloud-horizontal-blanco.svg" alt="MCLoud" />
+          <p>Conectamos ideas.<br />Entregamos soluciones.</p>
+        </div>
+        <div className="flow" data-draw>
+          <p className="mini-label">CÓMO TRABAJAMOS JUNTOS</p>
+          <div className="flow-steps">{allianceFlow.map(([ico, title, text], i) => <article key={title} style={{ "--i": i } as React.CSSProperties}><span className="flow-node"><Icono n={ico} /></span><b>{title}</b><small>{text}</small></article>)}</div>
+        </div>
+        <p className="mini-label">LO QUE YA TENEMOS</p>
+        <div className="project-grid">
+          {mcloudProjects.map(([n, ico, title, state, text], i) => <article key={n} data-reveal style={{ "--i": i } as React.CSSProperties}><div className="project-top"><span className="project-ico"><Icono n={ico} /></span><small>{state}</small></div><h3>{title}</h3><p>{text}</p><span className="project-n">{n}</span></article>)}
+        </div>
+      </section>
+
+      <section id="capitulo-10" className="chapter lab-section">
+        <div className="chapter-label"><span>CAPÍTULO 10</span><i /></div>
+        <div className="lab-hero" data-reveal>
+          <div className="lab-grid" aria-hidden="true" />
+          <div className="lab-orbit" aria-hidden="true"><i /><i /><i /><span><Icono n="flask-conical" /></span></div>
+          <div className="lab-hero-copy">
+            <p className="kicker">EL PROYECTO · LABORATORIO UPE-IA</p>
+            <h2>Un laboratorio de IA<br />para crear <em>prototipos.</em></h2>
+            <p>El lugar del Ecosistema UPE de Innovación donde las ideas de estudiantes y docentes se convierten en prototipos que se prueban, se miden y, si funcionan, llegan a toda la universidad. Empieza en el Centro de IA e Innovación Educativa de Medicina y se abre a todas las facultades.</p>
+            <div className="lab-tags"><span>Propuesta 2027</span><span>Con servidor de IA propio</span><span>Acompañado por <b className="nocaps">MCLoud</b></span></div>
+          </div>
+        </div>
+
+        <div className="pipeline" data-draw>
+          <div className="pipeline-head"><p className="kicker">DE LA IDEA AL IMPACTO</p><h3>Cada prototipo sigue el mismo camino.</h3></div>
+            <div className="pipeline-steps">{labPipeline.map(([ico, title, text], i) => <article key={title} style={{ "--i": i } as React.CSSProperties}><span className="pipe-node"><Icono n={ico} /></span><small>0{i + 1}</small><h4>{title}</h4><p>{text}</p></article>)}</div>
+        </div>
+
+        <div className="lab-block">
+          <div><p className="kicker">QUÉ TENDRÍA</p><h3>Todo lo necesario para pasar de la idea a la prueba.</h3></div>
+          <div className="lab-features">{labFeatures.map(([ico, title, text], i) => <article key={title} data-reveal style={{ "--i": i } as React.CSSProperties}><span className="feat-ico"><Icono n={ico} /></span><h4>{title}</h4><p>{text}</p></article>)}</div>
+        </div>
+
+        <div className="lab-block">
+          <div><p className="kicker">LÍNEAS DE TRABAJO</p><h3>Primeros temas, elegidos por necesidad real.</h3></div>
+          <div className="lab-lines" data-reveal>{labLines.map(([ico, label]) => <span key={label}><Icono n={ico} />{label}</span>)}</div>
+        </div>
+
+        <div className="lab-block">
+          <div><p className="kicker">UN EQUIPO QUE CONECTA TODA LA UPE</p><h3>Así se organizaría.</h3></div>
+          <div className="pieces">{ecosystemPieces.map(([ico, title, text], i) => <article key={title} data-reveal style={{ "--i": i } as React.CSSProperties}><Icono n={ico} /><div><b>{title}</b><span>{text}</span></div></article>)}</div>
+        </div>
+
+        <div className="gains">{labGains.map(([ico, title, items], i) => <article key={title} data-reveal style={{ "--i": i } as React.CSSProperties}><span className="feat-ico"><Icono n={ico} /></span><h4>{title}</h4><ul>{items.map((x) => <li key={x}><Icono n="check" />{x}</li>)}</ul></article>)}</div>
+      </section>
+
+      <section id="capitulo-11" className="chapter mbarete-section dark-section">
+        <div className="glow g1" aria-hidden="true" /><div className="glow g3" aria-hidden="true" />
+        <div className="chapter-label light"><span>CAPÍTULO 11</span><i /></div>
+        <div className="mbarete-hero">
+          <div className="mbarete-copy" data-reveal>
+            <p className="kicker">La tecnología · IA local de <span className="nocaps">MCLoud</span></p>
+            <h2>Mbarete.<br /><em>Una IA que trabaja dentro de casa.</em></h2>
+            <p>Mbarete es la plataforma de inteligencia artificial de MCLoud. Corre en computadoras propias, busca en los documentos de la institución y responde citando la fuente. Es el motor del laboratorio y de las soluciones para la UPE.</p>
+            <div className="data-rules">{dataRules.map(([ico, text]) => <span key={text}><Icono n={ico} />{text}</span>)}</div>
+          </div>
+          <MbareteDemo />
+        </div>
+
+        <div className="stack" data-draw>
+          <div className="stack-head"><p className="kicker">CÓMO ESTÁ ARMADA</p><h3>Cuatro capas, todas bajo control.</h3><p>Usa modelos abiertos de primer nivel. Lo propio de MCLoud es lo que los rodea: la búsqueda en documentos, los agentes, la memoria y el ajuste con ejemplos aprobados.</p></div>
+          <div className="stack-layers">{mbareteStack.map(([ico, title, items], i) => <article key={title} className={i === 1 ? "core" : ""} style={{ "--i": i } as React.CSSProperties}><span className="feat-ico"><Icono n={ico} /></span><b>{title}</b><div>{items.map((x) => <small key={x}>{x}</small>)}</div><i className="pulse" /></article>)}</div>
+        </div>
+
+        <p className="mini-label">QUÉ HACE HOY</p>
+        <div className="caps">{mbareteCaps.map(([ico, title, text, state], i) => <article key={title} data-reveal style={{ "--i": i % 4 } as React.CSSProperties}><div className="cap-top"><span className="project-ico"><Icono n={ico} /></span><small className={state === "Funcionando" ? "ok" : ""}>{state}</small></div><h4>{title}</h4><p>{text}</p></article>)}</div>
+
+        <div className="ai-uses" data-reveal>
+          <div className="ai-head"><p className="kicker">EN PALABRAS SIMPLES</p><h3>Tres ideas para entenderla.</h3></div>
+          {aiUses.map(([ico, tag, title, text]) => <article key={tag}><span className="feat-ico"><Icono n={ico} /></span><small>{tag}</small><h4>{title}</h4><p>{text}</p></article>)}
+          <p className="ai-rule">Siempre: las personas deciden, la IA ayuda y solo se usan datos permitidos.</p>
+        </div>
+      </section>
+
+      <section id="capitulo-12" className="chapter roadmap-section">
+        <div className="chapter-label"><span>CAPÍTULO 12</span><i /></div>
+        <div className="section-head">
+          <div><p className="kicker">HOJA DE RUTA</p><h2>Lo que tenemos<br />y <em>lo que viene.</em></h2></div>
+          <p>Una propuesta de trabajo por etapas. Las fechas dependen de los acuerdos con la UPE y de lo que muestre cada piloto.</p>
+        </div>
+        <div className="roadmap" data-draw>
+          <div className="roadmap-line"><i /></div>
+          {roadmap.map(([phase, when, kind, items], i) => <article key={phase + when} className={kind} style={{ "--i": i } as React.CSSProperties}><span className="road-dot" /><small>{phase}</small><h4>{when}</h4><ul>{items.map((x) => <li key={x}>{x}</li>)}</ul></article>)}
+        </div>
+      </section>
+
+      <section id="capitulo-13" className="future">
         <img src="/media/laboratorio.jpg" alt="Laboratorio de Medicina UPE" />
         <div className="future-overlay" />
         <div className="future-content"><p className="kicker">PRÓXIMA ETAPA</p><h2>El ecosistema<br />continúa creciendo.</h2><p>La evolución tecnológica desarrollada entre 2017 y 2026 es la base de una nueva etapa: consolidar un ecosistema inteligente de aprendizaje que fortalezca la calidad de la formación médica, la experiencia del estudiante y el cumplimiento de los estándares de acreditación.</p><div className="future-list">{projections.map(([n,title,text])=><span key={n}>{n} <b>{title}</b><br/>{text}</span>)}</div></div>
       </section>
 
       <footer>
-        <img src="/media/upe-logo.png" alt="UPE" />
+        <div className="footer-logos">
+          <img className="alliance-upe" src="/media/upe-logo.png" alt="Universidad Privada del Este" />
+          <i />
+          <img className="alliance-mcloud" src="/media/mcloud-horizontal-blanco.svg" alt="MCLoud" />
+        </div>
         <blockquote>“La inteligencia artificial no reemplaza la labor académica, docente ni institucional. <em>La fortalece.</em>”</blockquote>
-        <div><span>Facultad de Ciencias Médicas</span><span>Universidad Privada del Este</span><span>Presidente Franco · Paraguay</span></div>
+        <div><span>Facultad de Ciencias Médicas</span><span>Universidad Privada del Este</span><span>Desarrollo y acompañamiento tecnológico: <b className="nocaps">MCLoud</b></span><span>Presidente Franco · Paraguay</span></div>
       </footer>
     </main>
   );
