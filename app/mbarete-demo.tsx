@@ -63,7 +63,7 @@ export default function MbareteDemo() {
         </div>
         <div className={`demo-a ${fase >= 3 ? "on" : ""}`}>
           {respuesta.map((r, i) => <span key={r.c} style={{ transitionDelay: `${i * 450}ms` }}>{r.t}<sup>[{r.c}]</sup>{i < 2 ? ". " : "."}</span>)}
-          <div className={`demo-foot ${fase >= 4 ? "on" : ""}`}><span>Respuesta con fuentes</span><span>Los datos no salieron de la UPE</span></div>
+          <div className={`demo-foot ${fase >= 4 ? "on" : ""}`}><span>Respuesta con fuentes</span><span>Procesamiento local de la consulta</span></div>
         </div>
       </div>
       <p className="demo-note">Recreación animada de una consulta, con datos reales del Desafío.</p>
